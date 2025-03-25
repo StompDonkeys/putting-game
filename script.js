@@ -1,6 +1,9 @@
 const holePars = [4, 3, 2, 4, 3, 1, 4, 3, 2, 4, 3, 1]; // 12 holes (6 × 2)
 let rounds = JSON.parse(localStorage.getItem('rounds')) || [];
 
+// Set today's date as default
+document.getElementById('round-date').value = new Date().toISOString().split('T')[0];
+
 // Populate table
 function loadHoles() {
     const table = document.getElementById('hole-table');
@@ -36,14 +39,20 @@ function updateScores() {
 
 // Save round and update chart
 function saveRound() {
+    const date = document.getElementById('round-date').value;
+    if (!date) {
+        alert('Please select a date!');
+        return;
+    }
     const round = {
-        date: new Date().toLocaleDateString(),
+        date: date,
         scores: Array.from({ length: 12 }, (_, i) => parseInt(document.getElementById(`putts-${i}`).value) || 0),
         total: parseInt(document.getElementById('total-score').textContent)
     };
     rounds.push(round);
     localStorage.setItem('rounds', JSON.stringify(rounds));
     loadHoles(); // Reset inputs
+    document.getElementById('round-date').value = new Date().toISOString().split('T')[0]; // Reset to today
     updateChart();
 }
 
