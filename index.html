@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Putting Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for charts -->
+</head>
+<body>
+    <h1>Putting Game</h1>
+    <div id="input-section">
+        <table>
+            <thead>
+                <tr><th>Hole</th><th>Par</th><th>Putts</th><th>Score</th></tr>
+            </thead>
+            <tbody id="hole-table"></tbody>
+        </table>
+        <button onclick="saveRound()">Save Round</button>
+    </div>
+    <div id="summary">
+        <h2>Total Score: <span id="total-score">0</span></h2>
+    </div>
+    <div id="progress">
+        <h2>Progress</h2>
+        <canvas id="scoreChart"></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
