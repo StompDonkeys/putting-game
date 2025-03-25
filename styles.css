@@ -4,6 +4,16 @@ body {
     max-width: 600px;
     margin: auto;
 }
+#input-section label {
+    display: block;
+    margin: 10px 0 5px;
+}
+#round-date {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
 table {
     width: 100%;
     border-collapse: collapse;
