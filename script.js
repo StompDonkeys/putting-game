@@ -23,16 +23,16 @@ function loadHoles() {
 }
 loadHoles();
 
-// Calculate scores
+// Calculate scores (corrected)
 function updateScores() {
     let total = 0;
     for (let i = 0; i < 12; i++) {
         const putts = parseInt(document.getElementById(`putts-${i}`).value) || 0;
         const par = holePars[i];
-        const diff = putts - par;
-        const score = diff === 0 ? 'E' : (diff > 0 ? `+${diff}` : diff);
+        const diff = par - putts; // Flip the calculation: par - putts
+        const score = diff === 0 ? 'E' : (diff > 0 ? `+${diff}` : diff); // Positive if under par, negative if over
         document.getElementById(`score-${i}`).textContent = score;
-        total += diff;
+        total += diff; // Add difference to total
     }
     document.getElementById('total-score').textContent = total;
 }
